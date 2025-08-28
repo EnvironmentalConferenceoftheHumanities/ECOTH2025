@@ -1,0 +1,206 @@
+
+body {
+    font-family: 'Times New Roman', serif;
+    border: 5px solid black; /* Adds a black border around the whole webpage */
+    margin: 0; /* Removes any default margin around the body */
+    padding: 0; /* Removes any default padding around the body */
+    box-sizing: border-box;
+}
+
+/* Center all h1 elements */
+h1 {
+    text-align: center;
+}
+
+/* Container for left and right columns */
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    max-width: 50%
+    align-items: flex-start; /* Aligns left and right columns to the top */
+}
+
+/* Left column */
+.left {
+    flex: 1;
+    max-width: 50%
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns left navbar to the start */
+    justify-content: flex-start;
+    background-color: #f5f5f5;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+    min-height: 400px; /* Adjust to match or exceed the canvas height */
+}
+
+.left img {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+}
+
+.image-container {
+        position: relative;
+        display: inline-block;
+}
+
+/* Right column */
+.right {
+    flex: 1;
+    max-width: 50%
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns right navbar to the start */
+    justify-content: flex-start;
+    padding: 20px; /* Adjust padding to align with navbar */
+    box-sizing: border-box;
+}
+
+.right img {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+}
+
+.image-container {
+        position: relative;
+        display: inline-block;
+}
+
+/* Download Button Styles */
+.download-button {
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+    border: none; /* No border */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.download-button img {
+    width: 15px; /* Adjust button size */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.download-button img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.download-button img:active {
+    transform: scale(0.95); /* Button "press" effect */
+}
+
+/* General Header Styling */
+.header {
+  position: relative;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.header-image-wrapper {
+  position: relative;
+}
+
+.header-image {
+  width: 100%; /* Full width for the header image */
+  height: auto;
+}
+
+/* Navbar Styling */
+.navbar {
+  position: absolute; /* Overlay the navbar on the image */
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 10; /* Ensures the navbar is above the image */
+}
+
+.logo img {
+  height: 50px; /* Set a consistent height for the logo */
+  cursor: pointer;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+}
+
+.nav-buttons a img {
+  height: 50px; /* Set button image height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.nav-buttons a img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  opacity: 0.9; /* Reduce opacity slightly on hover */
+}
+
+/* Header Text Styling */
+.header-text {
+  position: absolute; /* Position the text on the image */
+  bottom: 20px; /* Adjust the vertical position */
+  left: 50%;
+  transform: translateX(-50%); /* Center the text horizontally */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners for the background */
+  z-index: 10; /* Ensure the text is above the image */
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+  font-size: 60px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .nav-buttons {
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-buttons button,
+  .nav-buttons a {
+    width: 90%;
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .header img {
+    max-height: 200px;
+  }
+
+  .header .header-text {
+    font-size: 24px;
+    top: 5px;
+    white-space: normal; /* allows text wrapping */
+    padding: 0 10px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .left,
+  .right {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+}
