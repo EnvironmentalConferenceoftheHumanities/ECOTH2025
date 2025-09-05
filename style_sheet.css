@@ -1,111 +1,94 @@
+/* Global */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
 body {
-    font-family: 'Times New Roman', serif;
-    border: 5px solid black; /* Adds a black border around the whole webpage */
-    margin: 0; /* Removes any default margin around the body */
-    padding: 0; /* Removes any default padding around the body */
-    box-sizing: border-box;
+  font-family: 'Times New Roman', serif;
+  border: 5px solid black;
+  margin: 0;
+  padding: 0;
 }
 
-/* Center all h1 elements */
-h1 {
-    text-align: center;
-}
+h1 { text-align: center; }
 
-/* Container for left and right columns */
+/* ---------- Layout container ---------- */
 .container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    max-width: 50%
-    align-items: flex-start; /* Aligns left and right columns to the top */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  max-width: 1100px;       /* was 50% — too narrow */
+  width: 100%;
+  margin: 0 auto;          /* center on page */
+  align-items: flex-start;
+  padding: 0 16px;
 }
 
-/* Left column */
+/* ---------- Left / Right columns ---------- */
 .left {
-    flex: 1;
-    max-width: 50%
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns left navbar to the start */
-    justify-content: flex-start;
-    background-color: #f5f5f5;
-    padding: 20px 20px 0 20px;
-    box-sizing: border-box;
-    min-height: 400px; /* Adjust to match or exceed the canvas height */
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #f5f5f5;
+  padding: 20px 20px 0 20px;
+  min-height: 400px;
 }
 
-.left img {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-}
-
-.image-container {
-        position: relative;
-        display: inline-block;
-}
-
-/* Right column */
 .right {
-    flex: 1;
-    max-width: 50%
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns right navbar to the start */
-    justify-content: flex-start;
-    padding: 20px; /* Adjust padding to align with navbar */
-    box-sizing: border-box;
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
+.left img,
 .right img {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
 }
 
 .image-container {
-        position: relative;
-        display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
+/* ---------- Land Acknowledgement block ---------- */
 .land-acknowledgement {
-  max-width: 800px;       /* keeps it from stretching too wide */
-  margin: 2rem auto;      /* centers it with spacing above/below */
-  padding: 1.5rem;        /* breathing room inside */
-  line-height: 1.6;       /* improves readability */
-  font-size: 1.05rem;     /* slightly larger for emphasis */
-  font-style: italic;     /* sets it apart from main text */
-  background-color: #f9f9f9;  /* subtle background */
-  border-left: 4px solid #4a6b4a; /* green accent to connect to environmental theme */
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-left: 4px solid #4a6b4a;
   border-radius: 4px;
 }
 
-
-/* Download Button Styles */
+/* ---------- Download Button ---------- */
 .download-button {
-    display: inline-block;
-    text-decoration: none; /* Remove underline */
-    border: none; /* No border */
-    outline: none; /* Remove focus outline */
-    cursor: pointer; /* Pointer cursor on hover */
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
-
 .download-button img {
-    width: 15px; /* Adjust button size */
-    height: auto; /* Maintain aspect ratio */
-    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+  width: 15px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
 }
+.download-button img:hover { transform: scale(1.1); }
+.download-button img:active { transform: scale(0.95); }
 
-.download-button img:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-}
-
-.download-button img:active {
-    transform: scale(0.95); /* Button "press" effect */
-}
-
-/* General Header Styling */
+/* ---------- Header / Hero ---------- */
 .header {
   position: relative;
   width: 100%;
@@ -113,107 +96,104 @@ h1 {
   text-align: center;
 }
 
-.header-image-wrapper {
-  position: relative;
-}
-
+.header-image-wrapper { position: relative; }
 .header-image {
-  width: 100%; /* Full width for the header image */
+  width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Navbar Styling */
+/* Navbar over hero on desktop */
 .navbar {
-  position: absolute; /* Overlay the navbar on the image */
+  position: absolute;      /* overlay on wide screens */
   top: 0;
   left: 0;
-  width: 90%;
+  width: 100%;             /* was 90% */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  z-index: 10; /* Ensures the navbar is above the image */
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(255,255,255,.95), rgba(255,255,255,.6) 60%, rgba(255,255,255,0));
+  backdrop-filter: blur(3px);
 }
 
 .logo img {
-  height: 50px; /* Set a consistent height for the logo */
+  height: 50px;
   cursor: pointer;
 }
 
-/* Navigation Buttons */
 .nav-buttons {
   display: flex;
-  gap: 15px; /* Space between buttons */
+  gap: 15px;
+  flex-wrap: wrap;
 }
-
 .nav-buttons a img {
-  height: 50px; /* Set button image height */
-  width: auto; /* Maintain aspect ratio */
+  height: 50px;
+  width: auto;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Smooth hover effect */
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
-
 .nav-buttons a img:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
-  opacity: 0.9; /* Reduce opacity slightly on hover */
+  transform: scale(1.1);
+  opacity: 0.9;
 }
 
-/* Header Text Styling */
+/* Big title on hero */
 .header-text {
-  position: absolute; /* Position the text on the image */
-  bottom: 20px; /* Adjust the vertical position */
+  position: absolute;
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Center the text horizontally */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding around the text */
-  border-radius: 5px; /* Rounded corners for the background */
-  z-index: 10; /* Ensure the text is above the image */
+  transform: translateX(-50%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 10;
   text-align: center;
-  font-family: 'Times New Roman', serif;
-  font-size: 60px;
-  white-space: nowrap;
+  font-family: 'Times New Roman', serif; /* or 'The Seasons', serif if you loaded it */
+  font-size: clamp(1.75rem, 6vw, 3.75rem);  /* responsive size */
+  line-height: 1.1;
+  white-space: normal;       /* allow wrapping */
+  text-shadow: 0 2px 6px rgba(0,0,0,.35); /* readability on photo */
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .nav-buttons {
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-buttons button,
-  .nav-buttons a {
-    width: 90%;
-    font-size: 1em;
-    padding: 10px;
-  }
-
-  .header img {
-    max-height: 200px;
-  }
-
-  .header .header-text {
-    font-size: 24px;
-    top: 5px;
-    white-space: normal; /* allows text wrapping */
-    padding: 0 10px;
-  }
-
-  .container {
-    flex-direction: column;
-  }
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .container { flex-direction: column; }
 
   .left,
   .right {
     max-width: 100%;
     width: 100%;
     height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stop the overlap: let navbar take its own space */
+  .navbar {
+    position: static;              /* no longer over the image */
+    background: rgba(255,255,255,.95);
+    padding: 8px 12px;
+    gap: 8px 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo img { height: 40px; }
+  .nav-buttons a img { height: 36px; }
+
+  /* Keep hero image visible but not too tall */
+  .header-image { max-height: 220px; object-fit: cover; }
+
+  /* Place the title below the nav and let it wrap */
+  .header-text {
+    position: static;              /* sits in normal flow */
+    transform: none;
+    color: #111;                   /* darker since it’s not over photo now */
+    text-shadow: none;
+    margin: .5rem auto 0;
+    padding: 0 10px;
+    font-size: clamp(1.25rem, 7vw, 2rem);
   }
 }
