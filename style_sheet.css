@@ -88,7 +88,7 @@ h1 { text-align: center; }
 .download-button img:hover { transform: scale(1.1); }
 .download-button img:active { transform: scale(0.95); }
 
-/* ===== Header / Hero ===== */
+/* General Header Styling */
 .header {
   position: relative;
   width: 100%;
@@ -96,83 +96,65 @@ h1 { text-align: center; }
   text-align: center;
 }
 
-.header-image-wrapper { position: relative; }
+.header-image-wrapper {
+  position: relative;
+}
 
 .header-image {
-  width: 100%;
+  width: 100%; /* Full width for the header image */
   height: auto;
-  display: block;
-  object-fit: cover;
 }
 
-/* --- Overlay grid that sits on top of the banner image --- */
-.header-overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-rows: auto 1fr;   /* row 1 = nav, row 2 = big words */
-  pointer-events: none;           /* overlay doesn't block clicks by default */
-}
-
-/* Navbar on the banner (no absolute positioning now) */
-.header .navbar {
-  grid-row: 1;
-  position: relative;
-  width: 100%;
+/* Navbar Styling */
+.navbar {
+  position: absolute; /* Overlay the navbar on the image */
+  top: 0;
+  left: 0;
+  width: 90%;
   display: flex;
-  justify-content: center;        /* center the green buttons; change if you prefer */
+  justify-content: space-between;
   align-items: center;
-  gap: 18px;
-  padding: 12px 20px;
-  z-index: 2;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.95) 0%,
-    rgba(255,255,255,0.65) 60%,
-    rgba(255,255,255,0) 100%
-  );
-  backdrop-filter: blur(3px);
-  pointer-events: auto;           /* keep nav clickable */
+  padding: 10px 20px;
+  z-index: 10; /* Ensures the navbar is above the image */
 }
 
 .logo img {
-  height: 50px;
+  height: 50px; /* Set a consistent height for the logo */
   cursor: pointer;
 }
 
+/* Navigation Buttons */
 .nav-buttons {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.nav-buttons a img {
-  height: 50px;
-  width: auto;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-}
-.nav-buttons a img:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
+  gap: 15px; /* Space between buttons */
 }
 
-/* Big words centered on the banner */
-.header-overlay .header-text {
-  grid-row: 2;
-  align-self: center;
-  justify-self: center;
-  position: relative;             /* no absolute positioning */
-  margin: 0;
-  padding: 0 1rem;
-  color: #fff;
+.nav-buttons a img {
+  height: 50px; /* Set button image height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.nav-buttons a img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  opacity: 0.9; /* Reduce opacity slightly on hover */
+}
+
+/* Header Text Styling */
+.header-text {
+  position: absolute; /* Position the text on the image */
+  bottom: 20px; /* Adjust the vertical position */
+  left: 50%;
+  transform: translateX(-50%); /* Center the text horizontally */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners for the background */
+  z-index: 10; /* Ensure the text is above the image */
   text-align: center;
-  font-family: 'Times New Roman', serif; /* or 'The Seasons', serif if loaded */
-  font-size: clamp(2rem, 8vw, 6rem);
-  line-height: 1.05;
-  white-space: normal;            /* allow wrapping */
-  text-shadow: 0 3px 10px rgba(0,0,0,.45);
-  z-index: 1;
-  pointer-events: auto;           /* selectable text */
+  font-family: 'Times New Roman', serif;
+  font-size: 60px;
+  white-space: nowrap;
 }
 
 /* ===== Responsive ===== */
