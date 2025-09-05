@@ -69,6 +69,19 @@ h1 {
         display: inline-block;
 }
 
+.land-acknowledgement {
+  max-width: 800px;       /* keeps it from stretching too wide */
+  margin: 2rem auto;      /* centers it with spacing above/below */
+  padding: 1.5rem;        /* breathing room inside */
+  line-height: 1.6;       /* improves readability */
+  font-size: 1.05rem;     /* slightly larger for emphasis */
+  font-style: italic;     /* sets it apart from main text */
+  background-color: #f9f9f9;  /* subtle background */
+  border-left: 4px solid #4a6b4a; /* green accent to connect to environmental theme */
+  border-radius: 4px;
+}
+
+
 /* Download Button Styles */
 .download-button {
     display: inline-block;
