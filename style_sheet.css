@@ -1,105 +1,97 @@
-/* ===== Global ===== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Times New Roman', serif;
-  border: 5px solid black;
-  margin: 0;
-  padding: 0;
+    font-family: 'Times New Roman', serif;
+    border: 5px solid black; /* Adds a black border around the whole webpage */
+    margin: 0; /* Removes any default margin around the body */
+    padding: 0; /* Removes any default padding around the body */
+    box-sizing: border-box;
 }
 
+/* Center all h1 elements */
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
-/* ===== Layout container ===== */
+/* Container for left and right columns */
 .container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
-  align-items: flex-start;
-  padding: 0 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    max-width: 50%
+    align-items: flex-start; /* Aligns left and right columns to the top */
 }
 
-/* ===== Left / Right columns ===== */
+/* Left column */
 .left {
-  flex: 1;
-  max-width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background-color: #f5f5f5;
-  padding: 20px 20px 0 20px;
-  min-height: 400px;
+    flex: 1;
+    max-width: 50%
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns left navbar to the start */
+    justify-content: flex-start;
+    background-color: #f5f5f5;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+    min-height: 400px; /* Adjust to match or exceed the canvas height */
 }
 
-.right {
-  flex: 1;
-  max-width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 20px;
-}
-
-.left img,
-.right img {
-  width: 100%;
-  height: auto;
-  margin-top: 0;
+.left img {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
 }
 
 .image-container {
-  position: relative;
-  display: inline-block;
+        position: relative;
+        display: inline-block;
 }
 
-/* ===== Land Acknowledgement block ===== */
-.land-acknowledgement {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  line-height: 1.6;
-  font-size: 1.05rem;
-  font-style: italic;
-  background-color: #f9f9f9;
-  border-left: 4px solid #4a6b4a;
-  border-radius: 4px;
+/* Right column */
+.right {
+    flex: 1;
+    max-width: 50%
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns right navbar to the start */
+    justify-content: flex-start;
+    padding: 20px; /* Adjust padding to align with navbar */
+    box-sizing: border-box;
 }
 
-/* ===== Download Button ===== */
+.right img {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+}
+
+.image-container {
+        position: relative;
+        display: inline-block;
+}
+
+/* Download Button Styles */
 .download-button {
-  display: inline-block;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+    border: none; /* No border */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
 .download-button img {
-  width: 15px;
-  height: auto;
-  transition: transform 0.2s ease-in-out;
+    width: 15px; /* Adjust button size */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
 .download-button img:hover {
-  transform: scale(1.1);
+    transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
 .download-button img:active {
-  transform: scale(0.95);
+    transform: scale(0.95); /* Button "press" effect */
 }
 
-/* ===== General Header Styling ===== */
+/* General Header Styling */
 .header {
   position: relative;
   width: 100%;
@@ -116,7 +108,7 @@ h1 {
   height: auto;
 }
 
-/* ===== Navbar Styling ===== */
+/* Navbar Styling */
 .navbar {
   position: absolute; /* Overlay the navbar on the image */
   top: 0;
@@ -134,7 +126,7 @@ h1 {
   cursor: pointer;
 }
 
-/* ===== Navigation Buttons ===== */
+/* Navigation Buttons */
 .nav-buttons {
   display: flex;
   gap: 15px; /* Space between buttons */
@@ -152,7 +144,7 @@ h1 {
   opacity: 0.9; /* Reduce opacity slightly on hover */
 }
 
-/* ===== Header Text Styling ===== */
+/* Header Text Styling */
 .header-text {
   position: absolute; /* Position the text on the image */
   bottom: 20px; /* Adjust the vertical position */
@@ -168,8 +160,38 @@ h1 {
   white-space: nowrap;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .nav-buttons {
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-buttons button,
+  .nav-buttons a {
+    width: 90%;
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .header img {
+    max-height: 200px;
+  }
+
+  .header .header-text {
+    font-size: 24px;
+    top: 5px;
+    white-space: normal; /* allows text wrapping */
+    padding: 0 10px;
+  }
+
   .container {
     flex-direction: column;
   }
@@ -181,28 +203,47 @@ h1 {
     height: auto;
   }
 }
+/* ===== Land Acknowledgement block ===== */
+.land-acknowledgement {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-left: 4px solid #4a6b4a;
+  border-radius: 4px;
+}
+
+/* Mobile layout: Stack columns on top of each other */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack on top of each other */
+    }
 
 @media (max-width: 768px) {
-  .header .navbar {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 8px 12px;
-  }
+    .header img {
+        max-height: 200px; /* Reduce max-height for mobile */
+    }
 
-  .logo img {
-    height: 40px;
-  }
+@media (max-width: 768px) {
+    #draw-canvas {
+        height: 400px; /* Reduced height for smaller screens */
+    }
 
-  .nav-buttons a img {
-    height: 36px;
-  }
-
-  .header-image {
-    max-height: 220px;
-    object-fit: cover;
-  }
-
-  .header-overlay .header-text {
-    font-size: clamp(1.5rem, 9vw, 3rem);
-  }
+    .right,
+    .left {
+        width: 100%;
+        height: auto;
+    }
+    
+/* Mobile-specific styling */
+@media (max-width: 768px) {
+    .header .header-text {
+        font-size: 24px; /* Further scale down font size on smaller screens */
+        top: 5px; /* Adjust top positioning for mobile */
+        white-space: nowrap; /* Allow text wrapping */
+        padding: 0 10px; /* Add padding to prevent edge overflow */
+    }
 }
