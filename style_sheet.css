@@ -162,107 +162,76 @@ h1 {
   border-radius: 4px;
 }
 
-/* ===== MOBILE HEADER (≤768px) ===== */
+/* ===== FIX UGLY MOBILE BUTTONS (≤768px) ===== */
 @media (max-width: 768px) {
-  /* Shorter image that still fills the width */
-  .hero-img,
-  .header-image {
-    height: 220px;           /* adjust between 200–260px if needed */
-    object-fit: cover;
+
+  /* Keep header simple and stop overlap issues */
+  .navbar {
+    position: static !important;
+    width: 100% !important;
+    padding: 12px 16px !important;
+    display: block !important;
   }
 
-  /* Centered layout with spacing */
-  .hero-inner,
-  .header-image-wrapper {
-    inset: 0;
-    padding: 12px 16px 76px; /* extra bottom space for the buttons */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  /* Lay buttons out in a tidy grid */
+  .navbar .nav-buttons,
+  .hero-nav {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(140px, 1fr)) !important; /* 2 per row */
+    gap: 12px !important;
+    justify-items: center !important;
+    margin: 10px 0 0 !important;
   }
 
-  /* Title styling */
-  .hero h1,
-  .header .header-text {
-    position: static;
-    transform: none;
-    white-space: normal;
-    font-size: clamp(22px, 7vw, 34px);
-    line-height: 1.15;
-    margin: 0;
-    color: #fff;
-    text-align: center;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  /* Make every button the same size, with a card look */
+  .navbar .nav-buttons a,
+  .navbar .nav-buttons button,
+  .hero-nav .nav-card {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 220px !important;
+    min-height: 64px !important;              /* consistent height */
+    padding: 10px 12px !important;
+    background: #8d9b8e !important;           /* sage */
+    color: #111 !important;
+    font-family: 'Times New Roman', serif !important;
+    font-size: clamp(16px, 4.8vw, 20px) !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 0 rgba(0,0,0,.12) !important;
+    border: 0 !important;
+    outline: 0 !important;
+    transition: transform .15s ease-in-out, opacity .15s ease-in-out !important;
   }
 
-  /* ECOTH badge */
-  .hero-badge,
-  .logo .badge,
-  .header .hero-badge {
-    position: static;
-    font-size: clamp(14px, 4.5vw, 18px);
-    padding: 0.25em 0.5em;
-    border-radius: 4px;
-    background: #8d9b8e; /* sage green */
-    color: #111;
-    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+  /* If your buttons are images, make the image sit nicely inside the card */
+  .navbar .nav-buttons a img,
+  .hero-nav a img {
+    display: block !important;
+    height: 36px !important;     /* uniform icon height */
+    width: auto !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    filter: none !important;
   }
 
-  /* Navigation buttons become a grid */
-  .hero-nav,
-  .navbar .nav-buttons {
-    position: static;
-    transform: none;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* two per row */
-    gap: 12px;
-    justify-items: center;
-    margin-top: 10px;
+  /* Tap feedback */
+  .navbar .nav-buttons a:active,
+  .navbar .nav-buttons button:active,
+  .hero-nav .nav-card:active {
+    transform: scale(0.98) !important;
   }
 
-  /* Nav cards/buttons */
-  .nav-card,
-  .nav-buttons a,
-  .nav-buttons button {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    max-width: 220px;
-    min-height: 64px;
-    padding: 10px 12px;
-    background: #8d9b8e; /* sage */
-    color: #111;
-    font-family: 'Times New Roman', serif;
-    font-size: clamp(16px, 4.8vw, 20px);
-    text-decoration: none;
-    border-radius: 6px;
-    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.12);
-    transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
-  }
-
-  .nav-card:active,
-  .nav-buttons a:active,
-  .nav-buttons button:active {
-    transform: scale(0.98);
-  }
-
-  .nav-buttons a img {
-    height: 40px;
-    width: auto;
-  }
-
-  /* Remove overlap and protect against notches */
-  .hero,
-  .header {
-    overflow: hidden;
-  }
-
-  .hero-inner {
-    padding-top: calc(12px + env(safe-area-inset-top));
-    padding-left: calc(16px + env(safe-area-inset-left));
-    padding-right: calc(16px + env(safe-area-inset-right));
+  /* Optional: on very narrow phones, make it 1 per row */
+  @media (max-width: 420px) {
+    .navbar .nav-buttons,
+    .hero-nav {
+      grid-template-columns: 1fr !important;
+    }
   }
 }
