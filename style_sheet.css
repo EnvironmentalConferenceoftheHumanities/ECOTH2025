@@ -1,97 +1,86 @@
 body {
-    font-family: 'Times New Roman', serif;
-    border: 5px solid black; /* Adds a black border around the whole webpage */
-    margin: 0; /* Removes any default margin around the body */
-    padding: 0; /* Removes any default padding around the body */
-    box-sizing: border-box;
+  font-family: 'Times New Roman', serif;
+  border: 5px solid black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Center all h1 elements */
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
-/* Container for left and right columns */
+/* ===== Layout container ===== */
 .container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    max-width: 50%
-    align-items: flex-start; /* Aligns left and right columns to the top */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  max-width: 100%;
+  align-items: flex-start;
 }
 
-/* Left column */
+/* ===== Left Column ===== */
 .left {
-    flex: 1;
-    max-width: 50%
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns left navbar to the start */
-    justify-content: flex-start;
-    background-color: #f5f5f5;
-    padding: 20px 20px 0 20px;
-    box-sizing: border-box;
-    min-height: 400px; /* Adjust to match or exceed the canvas height */
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #f5f5f5;
+  padding: 20px 20px 0 20px;
+  box-sizing: border-box;
+  min-height: 400px;
 }
 
 .left img {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
 }
 
-.image-container {
-        position: relative;
-        display: inline-block;
-}
-
-/* Right column */
+/* ===== Right Column ===== */
 .right {
-    flex: 1;
-    max-width: 50%
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns right navbar to the start */
-    justify-content: flex-start;
-    padding: 20px; /* Adjust padding to align with navbar */
-    box-sizing: border-box;
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .right img {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
 }
 
-.image-container {
-        position: relative;
-        display: inline-block;
-}
-
-/* Download Button Styles */
+/* ===== Download Button ===== */
 .download-button {
-    display: inline-block;
-    text-decoration: none; /* Remove underline */
-    border: none; /* No border */
-    outline: none; /* Remove focus outline */
-    cursor: pointer; /* Pointer cursor on hover */
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .download-button img {
-    width: 15px; /* Adjust button size */
-    height: auto; /* Maintain aspect ratio */
-    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+  width: 15px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
 }
 
 .download-button img:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1);
 }
 
 .download-button img:active {
-    transform: scale(0.95); /* Button "press" effect */
+  transform: scale(0.95);
 }
 
-/* General Header Styling */
+/* ===== Header ===== */
 .header {
   position: relative;
   width: 100%;
@@ -104,13 +93,13 @@ h1 {
 }
 
 .header-image {
-  width: 100%; /* Full width for the header image */
+  width: 100%;
   height: auto;
 }
 
-/* Navbar Styling */
+/* ===== Navbar ===== */
 .navbar {
-  position: absolute; /* Overlay the navbar on the image */
+  position: absolute;
   top: 0;
   left: 0;
   width: 90%;
@@ -118,49 +107,74 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  z-index: 10; /* Ensures the navbar is above the image */
+  z-index: 10;
 }
 
 .logo img {
-  height: 50px; /* Set a consistent height for the logo */
+  height: 50px;
   cursor: pointer;
 }
 
-/* Navigation Buttons */
+/* ===== Navigation Buttons ===== */
 .nav-buttons {
   display: flex;
-  gap: 15px; /* Space between buttons */
+  gap: 15px;
 }
 
 .nav-buttons a img {
-  height: 50px; /* Set button image height */
-  width: auto; /* Maintain aspect ratio */
+  height: 50px;
+  width: auto;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Smooth hover effect */
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .nav-buttons a img:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
-  opacity: 0.9; /* Reduce opacity slightly on hover */
+  transform: scale(1.1);
+  opacity: 0.9;
 }
 
-/* Header Text Styling */
+/* ===== Header Text ===== */
 .header-text {
-  position: absolute; /* Position the text on the image */
-  bottom: 20px; /* Adjust the vertical position */
+  position: absolute;
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Center the text horizontally */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding around the text */
-  border-radius: 5px; /* Rounded corners for the background */
-  z-index: 10; /* Ensure the text is above the image */
+  transform: translateX(-50%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 10;
   text-align: center;
   font-family: 'Times New Roman', serif;
   font-size: 60px;
   white-space: nowrap;
 }
 
+/* ===== Land Acknowledgement Block ===== */
+.land-acknowledgement {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-left: 4px solid #4a6b4a;
+  border-radius: 4px;
+}
+
+/* ===== MOBILE LAYOUT ===== */
 @media (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse; /* ✅ puts RIGHT column on TOP */
+  }
+
+  .left,
+  .right {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
   .navbar {
     flex-direction: column;
     align-items: center;
@@ -188,62 +202,11 @@ h1 {
   .header .header-text {
     font-size: 24px;
     top: 5px;
-    white-space: normal; /* allows text wrapping */
+    white-space: normal;
     padding: 0 10px;
   }
 
-  .container {
-    flex-direction: column;
+  #draw-canvas {
+    height: 400px;
   }
-
-  .left,
-  .right {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-  }
-}
-/* ===== Land Acknowledgement block ===== */
-.land-acknowledgement {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  line-height: 1.6;
-  font-size: 1.05rem;
-  font-style: italic;
-  background-color: #f9f9f9;
-  border-left: 4px solid #4a6b4a;
-  border-radius: 4px;
-}
-
-/* Mobile layout: Stack columns on top of each other */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Stack on top of each other */
-    }
-
-@media (max-width: 768px) {
-    .header img {
-        max-height: 200px; /* Reduce max-height for mobile */
-    }
-
-@media (max-width: 768px) {
-    #draw-canvas {
-        height: 400px; /* Reduced height for smaller screens */
-    }
-
-    .right,
-    .left {
-        width: 100%;
-        height: auto;
-    }
-    
-/* Mobile-specific styling */
-@media (max-width: 768px) {
-    .header .header-text {
-        font-size: 24px; /* Further scale down font size on smaller screens */
-        top: 5px; /* Adjust top positioning for mobile */
-        white-space: nowrap; /* Allow text wrapping */
-        padding: 0 10px; /* Add padding to prevent edge overflow */
-    }
 }
