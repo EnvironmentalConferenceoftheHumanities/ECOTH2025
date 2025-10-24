@@ -162,117 +162,107 @@ h1 {
   border-radius: 4px;
 }
 
-/* ===== CLEAN MOBILE HEADER FIX ===== */
+/* ===== MOBILE HEADER (≤768px) ===== */
 @media (max-width: 768px) {
-
-  /* Keep header proportional */
-  .header,
-  .hero {
-    position: relative;
-    overflow: hidden;
-    border: none;
-  }
-
-  /* Scale image properly */
-  .header img,
+  /* Shorter image that still fills the width */
   .hero-img,
   .header-image {
-    width: 100%;
-    height: auto;
+    height: 220px;           /* adjust between 200–260px if needed */
     object-fit: cover;
   }
 
-  /* Center content vertically on image */
-  .header .header-text,
-  .hero h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    font-family: 'Times New Roman', serif;
-    font-size: clamp(26px, 6vw, 40px);
-    white-space: normal;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    z-index: 5;
-  }
-
-  /* ECOTH badge centered above title */
-  .hero-badge,
-  .header .hero-badge {
-    position: absolute;
-    top: calc(50% - 80px); /* slightly above the text */
-    left: 50%;
-    transform: translateX(-50%);
-    background: #8d9b8e;
-    color: #111;
-    font-family: 'Times New Roman', serif;
-    font-size: clamp(16px, 4vw, 20px);
-    padding: 0.3em 0.6em;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 6;
-  }
-
-  /* Nav buttons: keep single row, center them */
-  .navbar,
-  .hero-nav,
-  .header .nav-buttons {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+  /* Centered layout with spacing */
+  .hero-inner,
+  .header-image-wrapper {
+    inset: 0;
+    padding: 12px 16px 76px; /* extra bottom space for the buttons */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    width: auto;
-    z-index: 6;
-    flex-wrap: wrap; /* allows wrap if screen is too narrow */
+    justify-content: center;
+    gap: 10px;
   }
 
-  /* Each button identical to desktop style, just smaller */
-  .navbar a,
+  /* Title styling */
+  .hero h1,
+  .header .header-text {
+    position: static;
+    transform: none;
+    white-space: normal;
+    font-size: clamp(22px, 7vw, 34px);
+    line-height: 1.15;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ECOTH badge */
+  .hero-badge,
+  .logo .badge,
+  .header .hero-badge {
+    position: static;
+    font-size: clamp(14px, 4.5vw, 18px);
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+    background: #8d9b8e; /* sage green */
+    color: #111;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  /* Navigation buttons become a grid */
+  .hero-nav,
+  .navbar .nav-buttons {
+    position: static;
+    transform: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two per row */
+    gap: 12px;
+    justify-items: center;
+    margin-top: 10px;
+  }
+
+  /* Nav cards/buttons */
+  .nav-card,
   .nav-buttons a,
-  .hero-nav a {
-    background-color: #8d9b8e;
+  .nav-buttons button {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 220px;
+    min-height: 64px;
+    padding: 10px 12px;
+    background: #8d9b8e; /* sage */
     color: #111;
     font-family: 'Times New Roman', serif;
+    font-size: clamp(16px, 4.8vw, 20px);
     text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 4px;
-    font-size: clamp(16px, 4.2vw, 18px);
-    text-align: center;
-    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
-    transition: transform 0.15s ease-in-out;
+    border-radius: 6px;
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
   }
 
-  .navbar a:hover,
-  .nav-buttons a:hover,
-  .hero-nav a:hover {
-    transform: scale(1.05);
+  .nav-card:active,
+  .nav-buttons a:active,
+  .nav-buttons button:active {
+    transform: scale(0.98);
   }
 
-  /* Fix header height so image fits */
-  .header-image-wrapper,
-  .hero {
-    height: auto;
-    min-height: 260px;
+  .nav-buttons a img {
+    height: 40px;
+    width: auto;
   }
 
-  /* Prevent text overflow on tiny phones */
-  @media (max-width: 480px) {
-    .header .header-text,
-    .hero h1 {
-      font-size: clamp(22px, 6vw, 30px);
-      width: 90%;
-    }
+  /* Remove overlap and protect against notches */
+  .hero,
+  .header {
+    overflow: hidden;
+  }
 
-    .navbar a,
-    .nav-buttons a {
-      font-size: 14px;
-      padding: 6px 10px;
-    }
+  .hero-inner {
+    padding-top: calc(12px + env(safe-area-inset-top));
+    padding-left: calc(16px + env(safe-area-inset-left));
+    padding-right: calc(16px + env(safe-area-inset-right));
   }
 }
