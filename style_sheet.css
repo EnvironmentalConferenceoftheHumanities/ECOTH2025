@@ -162,76 +162,117 @@ h1 {
   border-radius: 4px;
 }
 
-/* ===== FIX UGLY MOBILE BUTTONS (≤768px) ===== */
+/* ===== CLEAN MOBILE HEADER FIX ===== */
 @media (max-width: 768px) {
 
-  /* Keep header simple and stop overlap issues */
-  .navbar {
-    position: static !important;
-    width: 100% !important;
-    padding: 12px 16px !important;
-    display: block !important;
+  /* Keep header proportional */
+  .header,
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border: none;
   }
 
-  /* Lay buttons out in a tidy grid */
-  .navbar .nav-buttons,
-  .hero-nav {
-    position: static !important;
-    transform: none !important;
-    width: 100% !important;
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(140px, 1fr)) !important; /* 2 per row */
-    gap: 12px !important;
-    justify-items: center !important;
-    margin: 10px 0 0 !important;
+  /* Scale image properly */
+  .header img,
+  .hero-img,
+  .header-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
-  /* Make every button the same size, with a card look */
-  .navbar .nav-buttons a,
-  .navbar .nav-buttons button,
-  .hero-nav .nav-card {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 220px !important;
-    min-height: 64px !important;              /* consistent height */
-    padding: 10px 12px !important;
-    background: #8d9b8e !important;           /* sage */
-    color: #111 !important;
-    font-family: 'Times New Roman', serif !important;
-    font-size: clamp(16px, 4.8vw, 20px) !important;
-    text-decoration: none !important;
-    border-radius: 8px !important;
-    box-shadow: 0 10px 0 rgba(0,0,0,.12) !important;
-    border: 0 !important;
-    outline: 0 !important;
-    transition: transform .15s ease-in-out, opacity .15s ease-in-out !important;
+  /* Center content vertically on image */
+  .header .header-text,
+  .hero h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(26px, 6vw, 40px);
+    white-space: normal;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    z-index: 5;
   }
 
-  /* If your buttons are images, make the image sit nicely inside the card */
-  .navbar .nav-buttons a img,
-  .hero-nav a img {
-    display: block !important;
-    height: 36px !important;     /* uniform icon height */
-    width: auto !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-    filter: none !important;
+  /* ECOTH badge centered above title */
+  .hero-badge,
+  .header .hero-badge {
+    position: absolute;
+    top: calc(50% - 80px); /* slightly above the text */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #8d9b8e;
+    color: #111;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(16px, 4vw, 20px);
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 6;
   }
 
-  /* Tap feedback */
-  .navbar .nav-buttons a:active,
-  .navbar .nav-buttons button:active,
-  .hero-nav .nav-card:active {
-    transform: scale(0.98) !important;
+  /* Nav buttons: keep single row, center them */
+  .navbar,
+  .hero-nav,
+  .header .nav-buttons {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: auto;
+    z-index: 6;
+    flex-wrap: wrap; /* allows wrap if screen is too narrow */
   }
 
-  /* Optional: on very narrow phones, make it 1 per row */
-  @media (max-width: 420px) {
-    .navbar .nav-buttons,
-    .hero-nav {
-      grid-template-columns: 1fr !important;
+  /* Each button identical to desktop style, just smaller */
+  .navbar a,
+  .nav-buttons a,
+  .hero-nav a {
+    background-color: #8d9b8e;
+    color: #111;
+    font-family: 'Times New Roman', serif;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: clamp(16px, 4.2vw, 18px);
+    text-align: center;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease-in-out;
+  }
+
+  .navbar a:hover,
+  .nav-buttons a:hover,
+  .hero-nav a:hover {
+    transform: scale(1.05);
+  }
+
+  /* Fix header height so image fits */
+  .header-image-wrapper,
+  .hero {
+    height: auto;
+    min-height: 260px;
+  }
+
+  /* Prevent text overflow on tiny phones */
+  @media (max-width: 480px) {
+    .header .header-text,
+    .hero h1 {
+      font-size: clamp(22px, 6vw, 30px);
+      width: 90%;
+    }
+
+    .navbar a,
+    .nav-buttons a {
+      font-size: 14px;
+      padding: 6px 10px;
     }
   }
 }
