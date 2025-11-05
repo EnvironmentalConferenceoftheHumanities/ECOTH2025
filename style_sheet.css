@@ -162,10 +162,10 @@ h1 {
   border-radius: 4px;
 }
 
-/* ===== MOBILE LAYOUT ===== */
+/* ===== MOBILE LAYOUT (layout only) ===== */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column-reverse; /* ✅ puts RIGHT column on TOP */
+    flex-direction: column-reverse; /* puts RIGHT column on TOP */
   }
 
   .left,
@@ -175,154 +175,63 @@ h1 {
     height: auto;
   }
 
-  /* Hide the checkbox by default */
-.menu-toggle { display: none; }
-
-/* Hide hamburger UI by default (desktop) */
-.hamburger-icon,
-.hamburger-menu { display: none; }
-
-/* Ensure the navbar can anchor absolutely-positioned children */
-.navbar { position: absolute; }
-
-/* ===== DESKTOP RESET (>=769px) ===== */
-@media (min-width: 769px) {
-  .hamburger-icon,
-  .hamburger-menu,
-  .menu-toggle {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-
-  /* Ensure desktop image buttons always show */
-  .nav-buttons {
-    display: flex !important;
-  }
-}
-
-/* ===== MOBILE NAV (<=768px) ===== */
-@media (max-width: 768px) {
-
-  /* Hide desktop image buttons */
-  .nav-buttons {
-    display: none !important;
-  }
-
-  /* checkbox stays hidden */
-  .menu-toggle {
-    display: none;
-  }
-
-  /* SHOW hamburger button (moved to RIGHT) */
-  .hamburger-icon {
-    display: block;
-    font-size: 30px;
-    line-height: 1;
-    color: white;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 0.5rem 0.65rem;
-    border-radius: 6px;
-    position: absolute;
-    top: 10px;
-    right: 12px;        /* ✅ moved to RIGHT side */
-    z-index: 1001;
-    user-select: none;
-  }
-
-  /* Mobile dropdown menu (full width under header) */
-  .hamburger-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(4px);
-    padding: 12px;
-    z-index: 1000;
-    box-sizing: border-box;
-  }
-
-  /* Only show menu when checked */
-  .menu-toggle:checked + .hamburger-icon + .hamburger-menu {
-    display: block;
-  }
-
-  /* Mobile text links */
-  .hamburger-menu a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 0.7rem 1rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid white;
-    border-radius: 6px;
-    font-family: 'Times New Roman', serif;
-    background-color: black;
-    font-size: 1rem;
-  }
-
-  .hamburger-menu a:hover {
-    background-color: white;
-    color: black;
-  }
+  /* keep navbar positioned over header image on mobile */
+  .navbar { position: absolute; width: 100%; padding: 10px 12px; }
 }
 
 /* ============================================================
-   FULL DESKTOP/MOBILE NAV RESET & FIX  ✅ FINAL WORKING VERSION
+   HAMBURGER NAV: base + desktop + mobile
    ============================================================ */
 
-/* ---- 1. DEFAULT STATE: HIDE HAMBURGER ALWAYS ---- */
-.menu-toggle,
-.hamburger-icon,
-.hamburger-menu {
+/* ---- BASE: hide hamburger everywhere by default ---- */
+.navbar .menu-toggle,
+.navbar .hamburger-icon,
+.navbar .hamburger-menu {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
 
-/* ---- 2. DEFAULT STATE: SHOW DESKTOP IMAGE BUTTONS ---- */
-.nav-buttons {
-  display: flex !important;
+/* ---- DESKTOP (>=769px): show image buttons, keep hamburger hidden ---- */
+@media (min-width: 769px) {
+  .navbar .nav-buttons { display: flex !important; }
 }
 
-/* ---- 3. MOBILE BEHAVIOUR (≤768px) ---- */
+/* ---- MOBILE (<=768px): hide image buttons, show hamburger on RIGHT ---- */
 @media (max-width: 768px) {
 
-  /* Hide desktop nav buttons */
-  .nav-buttons {
+  /* hide desktop image buttons */
+  .navbar .nav-buttons { display: none !important; }
+
+  /* keep the checkbox itself hidden */
+  .navbar .menu-toggle {
     display: none !important;
+    visibility: hidden !important;
   }
 
-  /* Hidden checkbox toggle */
-  .menu-toggle {
-    display: none !important;
-  }
-
-  /* Show hamburger icon (RIGHT SIDE) */
-  .hamburger-icon {
+  /* show hamburger icon (right-aligned) */
+  .navbar .hamburger-icon {
     display: block !important;
     visibility: visible !important;
     pointer-events: auto !important;
 
     font-size: 32px;
-    color: white;
-    cursor: pointer;
+    color: #fff;
     background: rgba(0,0,0,0.6);
     padding: 0.5rem 0.7rem;
     border-radius: 6px;
+
     position: absolute;
     top: 10px;
-    right: 12px;
+    right: 12px;     /* right side */
     z-index: 1001;
+    line-height: 1;
+    cursor: pointer;
   }
 
-  /* Dropdown menu panel (hidden until opened) */
-  .hamburger-menu {
-    display: none !important;
+  /* dropdown panel (hidden until opened) */
+  .navbar .hamburger-menu {
+    display: none !important;           /* default hidden */
     visibility: visible !important;
     pointer-events: auto !important;
 
@@ -338,27 +247,27 @@ h1 {
     box-sizing: border-box;
   }
 
-  /* Show menu when checkbox is checked */
-  .menu-toggle:checked + .hamburger-icon + .hamburger-menu {
+  /* reveal when checkbox is checked */
+  .navbar .menu-toggle:checked + .hamburger-icon + .hamburger-menu {
     display: block !important;
   }
 
-  /* Mobile menu links */
-  .hamburger-menu a {
+  /* mobile menu links */
+  .navbar .hamburger-menu a {
     display: block;
-    color: white;
+    color: #fff;
     text-decoration: none;
     padding: 0.7rem 1rem;
     margin-bottom: 0.5rem;
-    border: 1px solid white;
+    border: 1px solid #fff;
     border-radius: 6px;
     font-family: 'Times New Roman', serif;
-    background-color: black;
+    background: #000;
     font-size: 1rem;
   }
 
-  .hamburger-menu a:hover {
-    background: white;
-    color: black;
+  .navbar .hamburger-menu a:hover {
+    background: #fff;
+    color: #000;
   }
 }
