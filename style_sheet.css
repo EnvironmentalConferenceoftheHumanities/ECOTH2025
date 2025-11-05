@@ -185,8 +185,20 @@ h1 {
 /* Ensure the navbar can anchor absolutely-positioned children */
 .navbar { position: absolute; }
 
-/* ===== Mobile hamburger (<=768px) ===== */
-@media (max-width: 768px) {
+  /* ==== DESKTOP RESET (ensure hamburger never appears on large screens) ==== */
+@media (min-width: 769px) {
+  .hamburger-icon,
+  .hamburger-menu,
+  .menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* force-show your original buttons on desktop */
+  .nav-buttons {
+    display: flex !important;
+
   /* Make navbar span full width on phones */
   .navbar { width: 100%; padding: 8px 12px; }
 
