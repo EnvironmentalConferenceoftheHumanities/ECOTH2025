@@ -136,7 +136,6 @@ h1 {
   opacity: 0.9;
 }
 
-/* ===== Header Text ===== */
 .header-text {
   position: absolute;
   bottom: 20px;
@@ -145,12 +144,12 @@ h1 {
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
-  z-index: 5;
+  z-index: 2000;       /* keep above navbar */
   text-align: center;
   font-family: 'Times New Roman', serif;
   font-size: 60px;
   white-space: nowrap;
-  pointer-events: none;        /* ✅ prevents block-click issues */
+  pointer-events: none; /* so clicks pass through */
 }
 
 /* ===== Land Acknowledgement Block ===== */
@@ -276,10 +275,11 @@ h1 {
   }
 
   /* Smaller header text on phone */
-  .header .header-text {
+  .header-text {
     font-size: 32px;
     white-space: normal;
     padding: 0 12px;
     bottom: 10px;
   }
+}
 }
